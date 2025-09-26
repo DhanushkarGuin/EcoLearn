@@ -1,0 +1,73 @@
+# Learn more: https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
+
+# =========================================
+# Dependencies & Cache
+# =========================================
+# Lockfiles should be committed, but node_modules should not.
+node_modules/
+
+# Metro bundler cache
+.metro-health-check*
+
+# TypeScript build cache
+*.tsbuildinfo
+
+# =========================================
+# Expo & Build Artifacts
+# =========================================
+# Expo local cache and generated files
+.expo/
+expo-env.d.ts
+
+# Build outputs
+dist/
+web-build/
+
+# Generated native folders (for managed workflow)
+/android
+/ios
+
+# EAS build artifacts
+eas-build-pre-upload.tar.gz
+
+# =========================================
+# IDE / Editor specific
+# =========================================
+.idea/
+.vscode/
+
+# =========================================
+# Environment & Sensitive Files
+# =========================================
+# Local environment variables. Never commit secrets!
+.env
+.env*.local
+
+# Signing keys and certificates
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.keystore
+*.pem
+
+# =========================================
+# OS-specific & Temporary Files
+# =========================================
+# macOS
+.DS_Store
+
+# Temporary files
+*.orig.*
+
+# Debug logs
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+
+# =========================================
+# Other
+# =========================================
+# Example folders or files you don't want to track
+app-example
