@@ -1,31 +1,36 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import { Feather } from '@expo/vector-icons';
+import { StyleSheet, Text, View, TouchableOpacity, Platform } from 'react-native';
+// Using FontAwesome for solid icons that better match the image
+import { FontAwesome } from '@expo/vector-icons';
 
+// Define the shape of the tab data
 type Tab = {
   name: string;
-  icon: React.ComponentProps<typeof Feather>['name'];
+  // Get the specific icon names available in FontAwesome
+  icon: React.ComponentProps<typeof FontAwesome>['name'];
   label: string;
 };
 
 interface TabBarProps {
-  theme: 'dark' | 'light';
+  theme: 'light' | 'dark';
 }
 
 const BottomTabBar: React.FC<TabBarProps> = ({ theme }) => {
   const styles = getStyles(theme);
+
+  // Note: labels are now lowercase to match the image
   const tabs: Tab[] = [
-    { name: 'notification', icon: 'bell', label: 'Notification' },
-    { name: 'home', icon: 'home', label: 'Home' },
-    { name: 'profile', icon: 'user', label: 'Profile' },
+    { name: 'notification', icon: 'bell', label: 'notification' },
+    { name: 'home', icon: 'home', label: 'home' },
+    { name: 'profile', icon: 'user', label: 'profile' },
   ];
 
   return (
     <View style={styles.tabBarContainer}>
       {tabs.map((tab) => (
         <TouchableOpacity key={tab.name} style={styles.tabItem}>
-          <Feather name={tab.icon} size={24} color={tab.name === 'home' ? '#FBBF24' : '#A9A9A9'} />
-          <Text style={[styles.tabLabel, tab.name === 'home' && styles.activeLabel]}>
+          <FontAwesome name={tab.icon} size={28} color={styles.icon.color} />
+          <Text style={styles.tabLabel}>
             {tab.label}
           </Text>
         </TouchableOpacity>
@@ -38,24 +43,25 @@ const getStyles = (theme: 'dark' | 'light') => StyleSheet.create({
   tabBarContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    backgroundColor: theme === 'dark' ? '#1E1E1E' : '#FFFFFF',
+    alignItems: 'center',
+    backgroundColor: theme === 'dark' ? '#1E1E1E' : '#F5F5F5',
     borderTopWidth: 1,
     borderTopColor: theme === 'dark' ? '#2E2E2E' : '#E0E0E0',
-    paddingVertical: 10,
-    // Add padding for the home bar area on newer phones
-    paddingBottom: 20, 
+    paddingTop: 10,
+    // Use paddingBottom that respects the safe area for modern devices
+    paddingBottom: Platform.OS === 'ios' ? 30 : 15,
   },
   tabItem: {
     alignItems: 'center',
   },
-  tabLabel: {
-    color: '#A9A9A9',
-    fontSize: 12,
-    marginTop: 4,
-    fontFamily: 'Poppins-Regular',
+  icon: {
+      color: theme === 'dark' ? '#FFFFFF' : '#121212',
   },
-  activeLabel: {
-    color: '#FBBF24',
+  tabLabel: {
+    color: theme === 'dark' ? '#AEB6BF' : '#566573',
+    fontSize: 12,
+    marginTop: 5,
+    fontFamily: 'Poppins-Regular',
   },
 });
 
