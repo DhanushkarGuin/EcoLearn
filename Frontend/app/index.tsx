@@ -6,6 +6,7 @@ const Index = () =>{
     <View>
       <Link href="/signup" style={styles.signup}>Signup</Link>
       <Link href="/login" style={styles.signup}>Login</Link>
+      <Link href="/continueAs" style={styles.signup}>Continue As</Link>
     </View>
   )
 }
