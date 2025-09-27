@@ -112,6 +112,7 @@ const LoginScreen = () =>{
                     <Text style={styles.mainButtonText}>Login</Text>
                 </TouchableOpacity>
                 <View style={styles.promptContainer}>
+                  <Text style={styles.promptLink}>Forget Password</Text>
                     {/* Text changed to "Don't have an account?" */}
                     <Text style={styles.promptText}>Don't have an account?</Text>
                     <TouchableOpacity>
