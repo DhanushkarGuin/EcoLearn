@@ -220,7 +220,7 @@ const getStyles = (theme: 'dark' | 'light') => StyleSheet.create({
     paddingVertical: 15,
     alignItems: 'center',
     marginVertical: 15,
-    marginLeft:100,
+    marginLeft:140,
   },
   disabledButton: {
     backgroundColor: '#A9A9A9', // Gray out when no reward is selected
