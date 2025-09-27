@@ -9,8 +9,16 @@ const STORAGE_KEY = '@saved_locations';
 // How close (in meters) a new photo needs to be to an old one to be considered a "match"
 const MATCHING_DISTANCE_METERS = 5;
 
+// --- FIX 1: Define the shape of our location data ---
+interface LocationData {
+  id: string;
+  latitude: number;
+  longitude: number;
+}
+
 export default function PhotoLocationTracker() {
-  const [storedLocations, setStoredLocations] = useState([]);
+  // --- FIX 2: Apply the type to the state ---
+  const [storedLocations, setStoredLocations] = useState<LocationData[]>([]);
 
   // Load locations from storage when the app starts
   useEffect(() => {
@@ -32,7 +40,8 @@ export default function PhotoLocationTracker() {
    * Calculates the distance between two GPS coordinates in meters using the Haversine formula.
    * This is crucial for detecting small changes in location.
    */
-  const getDistanceInMeters = (lat1, lon1, lat2, lon2) => {
+  // --- FIX 3: Add types to the function parameters ---
+  const getDistanceInMeters = (lat1: number, lon1: number, lat2: number, lon2: number) => {
     const R = 6371e3; // Earth's radius in meters
     const φ1 = (lat1 * Math.PI) / 180;
     const φ2 = (lat2 * Math.PI) / 180;
@@ -71,7 +80,6 @@ export default function PhotoLocationTracker() {
     // 4. Get High-Accuracy Location
     try {
       const currentLocation = await Location.getCurrentPositionAsync({
-        // THIS IS KEY: BestForNavigation provides the highest possible accuracy.
         accuracy: Location.Accuracy.BestForNavigation,
       });
 
@@ -91,7 +99,7 @@ export default function PhotoLocationTracker() {
         Alert.alert('Location Matched!', `You are within ${MATCHING_DISTANCE_METERS} meters of a previously saved spot.`);
       } else {
         // 6. If no match, save the new location
-        const newLocation = {
+        const newLocation: LocationData = {
           id: Date.now().toString(), // Unique ID for the list
           latitude,
           longitude,
