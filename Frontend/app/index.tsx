@@ -7,6 +7,10 @@ const Index = () =>{
       <Link href="/signup" style={styles.signup}>Signup</Link>
       <Link href="/login" style={styles.signup}>Login</Link>
       <Link href="/continueAs" style={styles.signup}>Continue As</Link>
+      <Link href="/photo_clicker" style={styles.signup}>Plantograhy</Link>
+      <Link href="/StudentPage" style={styles.signup}>StudentPage</Link>
+      <Link href="/Teacher" style={styles.signup}>TeacherPage</Link>
+      <Link href="/School" style={styles.signup}>SchoolPage</Link>
     </View>
   )
 }

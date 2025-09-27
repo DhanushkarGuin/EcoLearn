@@ -6,7 +6,7 @@ const RoleSelectionScreen: React.FC = () => {
   return (
     <SafeAreaView style={styles.safeArea}>
       <Image
-       source={require("../assets/images/logo-2.jpg")}
+       source={require("../assets/images/logo-2.png")}
   style={styles.logo}></Image>
       <View style={styles.container}>
           {/* Use the 'Poppins-Bold' font for this title */}
@@ -17,7 +17,7 @@ const RoleSelectionScreen: React.FC = () => {
           style={styles.studentButton}
           textStyle={styles.studentButtonText}
           // 👇 Place your image in the assets folder and update the path
-          imageSource={require('../assets/images/student.jpg')}
+          imageSource={require('../assets/images/student.png')}
           onPress={() => console.log('Student selected')}
         />
 
@@ -26,16 +26,16 @@ const RoleSelectionScreen: React.FC = () => {
           style={styles.teacherButton}
           textStyle={styles.teacherButtonText}
           // 👇 Place your image in the assets folder and update the path
-          imageSource={require('../assets/images/teacher.jpg')}
+          imageSource={require('../assets/images/teacher.png')}
           onPress={() => console.log('Teacher selected')}
         />
 
         <RoleButton
-          title="Principal"
+          title="School"
           style={styles.principalButton}
           textStyle={styles.principalButtonText}
           // 👇 Place your image in the assets folder and update the path
-          imageSource={require('../assets/images/principal.jpg')}
+          imageSource={require('../assets/images/school.png')}
           onPress={() => console.log('Principal selected')}
         />
       </View>
@@ -52,9 +52,9 @@ const styles = StyleSheet.create({
 logo: {
   height: 100, // You can adjust the height as needed
   width: 100, 
-  backgroundColor: "#F8F9FA",
+  backgroundColor: "#f8f9fa",
   resizeMode: 'contain', // Ensures the logo scales correctly without distortion
-  marginTop: 0, // Adds space from the top of the screen
+  marginTop: 5, // Adds space from the top of the screen
   marginLeft: -10, // Aligns it nicely with the buttons
 },
   container: {
