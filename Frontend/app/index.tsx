@@ -11,8 +11,11 @@ const Index = () =>{
       <Link href="/carbonFootprint" style={styles.signup}>CarbonFootprint</Link>
       <Link href="/photo_clicker" style={styles.signup}>Plantograhy</Link>
       <Link href="/StudentPage" style={styles.signup}>StudentPage</Link>
+      <Link href="/Student-events" style={styles.signup}>StudentEventsPage</Link>
       <Link href="/Teacher" style={styles.signup}>TeacherPage</Link>
+      <Link href="/TeacherManage-events" style={styles.signup}>TeacherEvents</Link>
       <Link href="/School" style={styles.signup}>SchoolPage</Link>
+      <Link href="/SchoolOrganize-events" style={styles.signup}>SchoolEvents</Link>
       <Link href="/Rewards" style={styles.signup}>RewardsPage</Link>
       <Link href="/Profile" style={styles.signup}>ProfilePage</Link>
       <Link href="/notifications" style={styles.signup}>NotificationsPage</Link>
