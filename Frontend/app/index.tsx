@@ -7,12 +7,13 @@ const Index = () =>{
       <Link href="/signup" style={styles.signup}>Signup</Link>
       <Link href="/login" style={styles.signup}>Login</Link>
       <Link href="/continueAs" style={styles.signup}>Continue As</Link>
+      <Link href="/PointsBalance" style={styles.signup}>PointsBalancePage</Link>
+      <Link href="/carbonFootprint" style={styles.signup}>CarbonFootprint</Link>
       <Link href="/photo_clicker" style={styles.signup}>Plantograhy</Link>
       <Link href="/StudentPage" style={styles.signup}>StudentPage</Link>
       <Link href="/Teacher" style={styles.signup}>TeacherPage</Link>
       <Link href="/School" style={styles.signup}>SchoolPage</Link>
       <Link href="/Rewards" style={styles.signup}>RewardsPage</Link>
-      <Link href="/PointsBalance" style={styles.signup}>PointsBalancePage</Link>
       <Link href="/Profile" style={styles.signup}>ProfilePage</Link>
       <Link href="/notifications" style={styles.signup}>NotificationsPage</Link>
       <Link href="/GamePlayers" style={styles.signup}>GamePlayers</Link>
