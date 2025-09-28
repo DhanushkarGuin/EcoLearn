@@ -22,6 +22,7 @@ const Index = () =>{
       <Link href="/Profile" style={styles.signup}>ProfilePage</Link>
       <Link href="/notifications" style={styles.signup}>NotificationsPage</Link>
       <Link href="/GamePlayers" style={styles.signup}>GamePlayers</Link>
+      <Link href="/GameList" style={styles.signup}>Games</Link>
       
       
       
