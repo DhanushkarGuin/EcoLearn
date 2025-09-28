@@ -49,7 +49,7 @@ const SchoolHomeScreen: React.FC = () => {
 
           {/* Action Cards */}
           <ActionCard
-            title="Manage Events"
+            title="Organize Events"
             imageSource={require('../assets/images/manage-events.png')}
             onPress={() => console.log('Manage Events')}
             theme={theme}
@@ -61,7 +61,7 @@ const SchoolHomeScreen: React.FC = () => {
             theme={theme}
           />
           <ActionCard
-            title="Check LeaderBoardC"
+            title="Check LeaderBoard"
             imageSource={require('../assets/images/check-leaderBoard.png')}
             onPress={() => console.log('Check Plantography')}
             theme={theme}
