@@ -12,12 +12,15 @@ const Index = () =>{
       <Link href="/photo_clicker" style={styles.signup}>Plantograhy</Link>
       <Link href="/StudentPage" style={styles.signup}>StudentPage</Link>
       <Link href="/Student-events" style={styles.signup}>StudentEventsPage</Link>
+      <Link href="/StudentDetails" style={styles.signup}>StudentDetailsPage</Link>
       <Link href="/Teacher" style={styles.signup}>TeacherPage</Link>
       <Link href="/Teacher-Provide-points" style={styles.signup}>TeacherProvidePointsPage</Link>
       <Link href="/TeacherManage-events" style={styles.signup}>TeacherEvents</Link>
+      <Link href="/TeacherDetails" style={styles.signup}>TeacherDetails</Link>
       <Link href="/School" style={styles.signup}>SchoolPage</Link>
       <Link href="/School-Provide-points" style={styles.signup}>SchoolProvidePointsPage</Link>
       <Link href="/SchoolOrganize-events" style={styles.signup}>SchoolEvents</Link>
+      <Link href="/SchoolDetails" style={styles.signup}>SchoolDetails</Link>
       <Link href="/Rewards" style={styles.signup}>RewardsPage</Link>
       <Link href="/Profile" style={styles.signup}>ProfilePage</Link>
       <Link href="/notifications" style={styles.signup}>NotificationsPage</Link>
