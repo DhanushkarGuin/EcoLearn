@@ -23,6 +23,7 @@ const Index = () =>{
       <Link href="/notifications" style={styles.signup}>NotificationsPage</Link>
       <Link href="/GamePlayers" style={styles.signup}>GamePlayers</Link>
       <Link href="/GameList" style={styles.signup}>Games</Link>
+      <Link href="/LeaderBoard" style={styles.signup}>leaderBoard</Link>
       
       
       
