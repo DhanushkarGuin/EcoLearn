@@ -43,18 +43,28 @@ const TeacherHomeScreen: React.FC = () => {
 
           {/* Scan Entry QR Card */}
           <TouchableOpacity style={[styles.card, styles.actionCard, styles.yellowCard]}>
-            <Text style={styles.actionCardTitle}>Scan entry QR</Text>
-            {/* 👇 IMPORTANT: Replace with the correct path to your image */}
-            <Image source={require('../assets/images/qr-scan.png')} style={styles.actionCardImage} />
+            <Text style={styles.actionCardTitle}>Confirm student entry</Text>
+            <Image source={require('../assets/images/IDcheck.png')} style={styles.actionCardImage} />
           </TouchableOpacity>
 
           {/* Provide Points Card */}
           <TouchableOpacity style={[styles.card, styles.actionCard, styles.yellowCard]}>
             <Text style={styles.actionCardTitle}>Provide points to student</Text>
-             {/* 👇 IMPORTANT: Replace with the correct path to your image */}
             <Image source={require('../assets/images/provide-points.png')} style={styles.actionCardImage} />
           </TouchableOpacity>
-
+          
+          {/* --- NEW LEADERBOARDS CARD --- */}
+          <TouchableOpacity style={[styles.card, styles.actionCard, styles.yellowCard]}>
+            <Text style={styles.actionCardTitle}>Check Leaderboards</Text>
+            {/* 👇 IMPORTANT: Add 'check-leaderboards.png' to your assets/images folder */}
+            <Image source={require('../assets/images/check-leaderBoard.png')} style={styles.actionCardImage} />
+          </TouchableOpacity>
+          {/* --- END OF NEW CARD --- */}
+<TouchableOpacity style={[styles.card, styles.actionCard, styles.yellowCard]}>
+            <Text style={styles.actionCardTitle}>Manage Events</Text>
+            {/* 👇 IMPORTANT: Add 'check-leaderboards.png' to your assets/images folder */}
+            <Image source={require('../assets/images/manage-events.png')} style={styles.actionCardImage} />
+          </TouchableOpacity>
         </ScrollView>
         <BottomTabBar theme={theme} />
       </View>
@@ -152,9 +162,10 @@ const getStyles = (theme: 'dark' | 'light') => StyleSheet.create({
   },
   actionCardImage: {
     width: 100,
-    height: 100,
+    height: 80,
     resizeMode: 'contain',
   },
 });
 
 export default TeacherHomeScreen;
+
