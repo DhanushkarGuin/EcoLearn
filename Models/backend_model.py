@@ -2,8 +2,8 @@ import base64
 import io
 import numpy as np
 import tensorflow as tf
-from fastapi import FastAPI
-from pydantic import BaseModel
+from fastapi import FastAPI # pyright: ignore[reportMissingImports]
+from pydantic import BaseModel # pyright: ignore[reportMissingImports]
 from PIL import Image
 
 # --- SETUP --- #
