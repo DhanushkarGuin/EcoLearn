@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import React, {useState} from "react";
 import { Feather } from '@expo/vector-icons';
+import {router} from 'expo-router'
 
 // --- Color palettes can be shared between screens ---
 const lightColors = {
@@ -41,6 +42,15 @@ const darkColors = {
 interface ThemeToggleProps {
   theme: 'light' | 'dark';
   onPress: () => void;
+}
+
+//Page-flow
+const handleSignupPress = () =>{
+    router.push('/signup')
+}
+
+const handleButtonPress = () =>{
+    router.push('/continueAs')
 }
 
 // Custom Theme Toggle Switch Component (reusable)
@@ -108,15 +118,13 @@ const LoginScreen = () =>{
 
             <View style={styles.buttonsContainer}>
                 {/* Text changed to "Login" */}
-                <TouchableOpacity style={styles.mainButton}>
+                <TouchableOpacity style={styles.mainButton} onPress={handleButtonPress}>
                     <Text style={styles.mainButtonText}>Login</Text>
                 </TouchableOpacity>
                 <View style={styles.promptContainer}>
                   <Text style={styles.promptLink}>Forget Password</Text>
-                    {/* Text changed to "Don't have an account?" */}
                     <Text style={styles.promptText}>Don't have an account?</Text>
-                    <TouchableOpacity>
-                        {/* Text changed to "Signup" */}
+                    <TouchableOpacity onPress={handleSignupPress}>
                         <Text style={styles.promptLink}>Signup</Text>
                     </TouchableOpacity>
                 </View>

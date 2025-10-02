@@ -4,6 +4,28 @@ import Header from '../components/Header';
 import CalendarWidget from '../components/CalendarWidget';
 import BottomTabBar from '../components/BottomTabBar';
 import { FontAwesome5 } from '@expo/vector-icons';
+import {router} from 'expo-router';
+
+//Page-flow
+const handlePlantographButton = () =>{
+  router.push('/photo_clicker')
+}
+
+const handleEventsButton = () =>{
+  router.push('/TeacherManage-events')
+}
+
+const handleStudentEntryButton = () =>{
+
+}
+
+const handlePointsButton = () =>{
+  router.push("/Teacher-Provide-points")
+}
+
+const handleLeaderboardsButton = () =>{
+  router.push('/LeaderBoard')
+}
 
 const TeacherHomeScreen: React.FC = () => {
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
@@ -21,7 +43,7 @@ const TeacherHomeScreen: React.FC = () => {
         <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 20 }}>
 
           {/* Check Student's Plantography Card */}
-          <TouchableOpacity style={[styles.card, styles.plantographCard]}>
+          <TouchableOpacity style={[styles.card, styles.plantographCard]} onPress={handlePlantographButton}>
             <Text style={styles.plantographCardTitle}>Check student's Plantography</Text>
             <View style={styles.polaroidFrame}>
               <View style={styles.polaroidBorder}>
@@ -37,8 +59,10 @@ const TeacherHomeScreen: React.FC = () => {
 
           {/* School Events Card */}
           <View style={[styles.card]}>
-            <Text style={styles.cardTitle}>School Events</Text>
-            <CalendarWidget theme={theme} />
+            <TouchableOpacity onPress={handleEventsButton}>
+              <Text style={styles.cardTitle}>School Events</Text>
+              <CalendarWidget theme={theme} />
+            </TouchableOpacity>
           </View>
 
           {/* Scan Entry QR Card */}
@@ -48,19 +72,19 @@ const TeacherHomeScreen: React.FC = () => {
           </TouchableOpacity>
 
           {/* Provide Points Card */}
-          <TouchableOpacity style={[styles.card, styles.actionCard, styles.yellowCard]}>
+          <TouchableOpacity style={[styles.card, styles.actionCard, styles.yellowCard]} onPress={handlePointsButton}>
             <Text style={styles.actionCardTitle}>Provide points to student</Text>
             <Image source={require('../assets/images/provide-points.png')} style={styles.actionCardImage} />
           </TouchableOpacity>
           
           {/* --- NEW LEADERBOARDS CARD --- */}
-          <TouchableOpacity style={[styles.card, styles.actionCard, styles.yellowCard]}>
+          <TouchableOpacity style={[styles.card, styles.actionCard, styles.yellowCard]} onPress={handleLeaderboardsButton}>
             <Text style={styles.actionCardTitle}>Check Leaderboards</Text>
             {/* 👇 IMPORTANT: Add 'check-leaderboards.png' to your assets/images folder */}
             <Image source={require('../assets/images/check-leaderBoard.png')} style={styles.actionCardImage} />
           </TouchableOpacity>
           {/* --- END OF NEW CARD --- */}
-<TouchableOpacity style={[styles.card, styles.actionCard, styles.yellowCard]}>
+          <TouchableOpacity style={[styles.card, styles.actionCard, styles.yellowCard]} onPress={handleEventsButton}>
             <Text style={styles.actionCardTitle}>Manage Events</Text>
             {/* 👇 IMPORTANT: Add 'check-leaderboards.png' to your assets/images folder */}
             <Image source={require('../assets/images/manage-events.png')} style={styles.actionCardImage} />

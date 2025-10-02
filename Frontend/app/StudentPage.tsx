@@ -4,6 +4,36 @@ import Header from '../components/Header';
 import CalendarWidget from '../components/CalendarWidget';
 import BottomTabBar from '../components/BottomTabBar';
 import { Feather, FontAwesome5 } from '@expo/vector-icons'; // Using FontAwesome5 for seedling
+import {router} from 'expo-router';
+
+//Page-flow
+const handleRewardsButton = () =>{
+    router.push('/Rewards')
+}
+
+const handleBalanceButton = () =>{
+    router.push('/PointsBalance')
+}
+
+const handleFootprintButton = () =>{
+    router.push('/carbonFootprint')
+}
+
+const handleEventsButton = () =>{
+    router.push('/Student-events')
+}
+
+const handlePlantographButton = () =>{
+    router.push('/photo_clicker')
+}
+
+const handleLeaderboardsButton = () =>{
+    router.push('/LeaderBoard')
+}
+
+const handleGamesButton = () =>{
+    router.push('/GameList')
+}
 
 const HomeScreen: React.FC = () => {
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
@@ -31,7 +61,7 @@ const HomeScreen: React.FC = () => {
                 </View>
                 <Feather name="gift" size={32} color="#D32F2F" style={styles.rewardsIcon} />
                 <Text style={styles.rewardsCardSubtitle}>You can redeem rewards</Text>
-                <TouchableOpacity style={styles.detailsButton}>
+                <TouchableOpacity style={styles.detailsButton} onPress={handleRewardsButton}>
                   <Text style={styles.detailsButtonText}>View Details</Text>
                 </TouchableOpacity>
               </View>
@@ -44,26 +74,32 @@ const HomeScreen: React.FC = () => {
                   <Text style={styles.balanceCardTitle}>Balance</Text>
                   <Feather name="arrow-right" size={20} color="#333" />
                 </View>
-                <Text style={styles.balanceText}>42069</Text>
+                    <TouchableOpacity onPress={handleBalanceButton}>
+                        <Text style={styles.balanceText}>42069</Text>
+                    </TouchableOpacity>
               </View>
               <View style={[styles.card, styles.carbonCard]}>
                 <View style={styles.cardHeader}>
                   <Text style={styles.balanceCardTitle}>Carbon Footprint</Text>
                   <Feather name="arrow-right" size={20} color="#333" />
                 </View>
-                <Text style={styles.carbonText}>XX saved</Text>
+                <TouchableOpacity onPress={handleFootprintButton}>
+                    <Text style={styles.carbonText}>XX saved</Text>
+                </TouchableOpacity>
               </View>
             </View>
           </View>
 
           {/* School Events Card */}
           <View style={[styles.card, styles.fullWidthCard]}>
-            <Text style={styles.cardTitle}>School Events</Text>
-            <CalendarWidget theme={theme} />
+            <TouchableOpacity onPress={handleEventsButton}>
+                <Text style={styles.cardTitle}>School Events</Text>
+                <CalendarWidget theme={theme} />
+            </TouchableOpacity>
           </View>
 
           {/* Plantograph Card - Corrected Icon */}
-           <TouchableOpacity style={[styles.card, styles.fullWidthCard, styles.plantographCard]}>
+           <TouchableOpacity style={[styles.card, styles.fullWidthCard, styles.plantographCard]} onPress={handlePlantographButton}>
             <Text style={styles.plantographCardTitle}>Click your Plantograph</Text>
             <View style={styles.polaroidFrame}>
                 <View style={styles.polaroidBorder}>
@@ -78,14 +114,16 @@ const HomeScreen: React.FC = () => {
           </TouchableOpacity>
 
           {/* Leaderboards Card */}
-          <View style={[styles.card, styles.fullWidthCard]}>
-             <Text style={styles.cardTitle}>Leaderboards</Text>
-             <Text style={styles.cardSubtitle}>You are placed</Text>
-             <Text style={styles.leaderboardRank}>69th right now!</Text>
+        <View style={[styles.card, styles.fullWidthCard]}>
+            <TouchableOpacity onPress={handleLeaderboardsButton}>
+                <Text style={styles.cardTitle}>Leaderboards</Text>
+                <Text style={styles.cardSubtitle}>You are placed</Text>
+                <Text style={styles.leaderboardRank}>69th right now!</Text>
+            </TouchableOpacity>
           </View>
 
            {/* Games Card */}
-           <TouchableOpacity style={[styles.card, styles.fullWidthCard, styles.gamesCard]}>
+           <TouchableOpacity style={[styles.card, styles.fullWidthCard, styles.gamesCard]} onPress={handleGamesButton}>
                 <View>
                     <Text style={styles.cardTitle}>Games</Text>
                     <Text style={styles.cardSubtitle}>check out 5 unique <Text style={styles.gamesLink}>games</Text></Text>

@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import React, {useState} from "react";
 import { Feather } from '@expo/vector-icons';
+import { router } from "expo-router";
 
 // --- Color palettes for easy management ---
 const lightColors = {
@@ -55,6 +56,15 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ theme, onPress }) => {
             <Feather name="moon" size={18} color={theme === 'dark' ? colors.buttonText : colors.text} />
         </TouchableOpacity>
     );
+}
+
+// Page-Flow
+const handleLoginPress = () =>{
+    router.push("/login");
+}
+
+const handleButtonPress = () =>{
+    router.push('/continueAs')
 }
 
 const Index = () =>{
@@ -108,13 +118,13 @@ const Index = () =>{
             />
 
             <View style={styles.buttonsContainer}>
-                <TouchableOpacity style={styles.signupButton}>
+                <TouchableOpacity style={styles.signupButton} onPress={handleButtonPress}>
                     <Text style={styles.signupButtonText}>Signup</Text>
                 </TouchableOpacity>
                 <View style={styles.loginPromptContainer}>
                     <Text style={styles.alreadyText}>Already have an account?</Text>
-                    <TouchableOpacity>
-                        <Text style={styles.loginButton}>Login</Text>
+                    <TouchableOpacity onPress={handleLoginPress}>
+                        <Text style={styles.loginButton} >Login</Text>
                     </TouchableOpacity>
                 </View>
             </View>

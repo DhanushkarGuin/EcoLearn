@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import { Feather, FontAwesome5 } from '@expo/vector-icons';
 import BottomTabBar from '../components/BottomTabBar';
+import {router} from 'expo-router';
 
 // --- Data & Constants for Carbon Calculation ---
 // These are simplified estimates. Real calculations are more complex.
@@ -29,6 +30,11 @@ interface CalculatorInputProps {
   onIncrement: () => void;
   onDecrement: () => void;
   theme: 'light' | 'dark';
+}
+
+//Page-flow
+const handleBackButton = () =>{
+  router.push('/StudentPage')
 }
 
 const CalculatorInput: React.FC<CalculatorInputProps> = ({ label, icon, value, onIncrement, onDecrement, theme }) => {
@@ -87,7 +93,7 @@ const CarbonFootprintScreen: React.FC = () => {
                 <TouchableOpacity onPress={toggleTheme}>
                     <Feather name={theme === 'light' ? 'moon' : 'sun'} size={24} color={headerIconColor} />
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.backButtonCircle}>
+                <TouchableOpacity style={styles.backButtonCircle} onPress={handleBackButton}>
                     <Feather name="chevron-left" size={24} color={headerIconColor} />
                 </TouchableOpacity>
             </View>

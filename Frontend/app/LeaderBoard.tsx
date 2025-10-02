@@ -11,6 +11,12 @@ import {
 } from 'react-native';
 import { Feather, FontAwesome5 } from '@expo/vector-icons';
 import BottomTabBar from '../components/BottomTabBar';
+import { router } from 'expo-router';
+
+// Page-flow
+const handleBackButton = () =>{
+  router.push('/StudentPage')
+}
 
 // --- Mock Data for Students ---
 // In a real app, this would be fetched from your database
@@ -92,7 +98,7 @@ const LeaderboardScreen: React.FC = () => {
                 <TouchableOpacity onPress={toggleTheme}>
                     <Feather name={theme === 'light' ? 'moon' : 'sun'} size={24} color={headerIconColor} />
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.backButtonCircle}>
+                <TouchableOpacity style={styles.backButtonCircle} onPress={handleBackButton}>
                     <Feather name="chevron-left" size={24} color={headerIconColor} />
                 </TouchableOpacity>
             </View>

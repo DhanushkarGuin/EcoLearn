@@ -1,6 +1,20 @@
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView,Image } from 'react-native';
 import RoleButton from '../components/RoleButton';
+import {router} from 'expo-router';
+
+//Page-flow
+const handleStudentPress = () =>{
+  router.push('/StudentPage')
+}
+
+const handleTeacherPress = () =>{
+  router.push('/Teacher')
+}
+
+const handleSchoolPress = () =>{
+  router.push('/School')
+}
 
 const RoleSelectionScreen: React.FC = () => {
   return (
@@ -18,7 +32,7 @@ const RoleSelectionScreen: React.FC = () => {
           textStyle={styles.studentButtonText}
           // 👇 Place your image in the assets folder and update the path
           imageSource={require('../assets/images/student.png')}
-          onPress={() => console.log('Student selected')}
+          onPress={handleStudentPress}
         />
 
         <RoleButton
@@ -27,7 +41,7 @@ const RoleSelectionScreen: React.FC = () => {
           textStyle={styles.teacherButtonText}
           // 👇 Place your image in the assets folder and update the path
           imageSource={require('../assets/images/teacher.png')}
-          onPress={() => console.log('Teacher selected')}
+          onPress={handleTeacherPress}
         />
 
         <RoleButton
@@ -36,7 +50,7 @@ const RoleSelectionScreen: React.FC = () => {
           textStyle={styles.principalButtonText}
           // 👇 Place your image in the assets folder and update the path
           imageSource={require('../assets/images/school.png')}
-          onPress={() => console.log('Principal selected')}
+          onPress={handleSchoolPress}
         />
       </View>
     </SafeAreaView>

@@ -18,6 +18,12 @@ import { Feather, FontAwesome5 } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
 import * as Location from 'expo-location';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {router} from 'expo-router';
+
+// Page-flow
+const handleBackButton = () =>{
+  router.push('/StudentPage')
+}
 
 // --- Configuration ---
 const STORAGE_KEY = '@saved_plants_history_v2';
@@ -191,7 +197,7 @@ const PlantographScreen: React.FC = () => {
                 <TouchableOpacity onPress={toggleTheme}>
                     <Feather name={theme === 'light' ? 'moon' : 'sun'} size={24} color={headerIconColor} />
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.backButtonCircle} onPress={() => screenState === 'details' ? resetAndGoToHistory() : console.log('Back pressed')}>
+                <TouchableOpacity style={styles.backButtonCircle} onPress={handleBackButton}>
                     <Feather name="chevron-left" size={24} color={headerIconColor} />
                 </TouchableOpacity>
             </View>
