@@ -33,6 +33,7 @@ export default function RootLayout() {
         initialRouteName="(auth)"   // 👈 ensures login/signup shows first
       >
         <Stack.Screen name="(auth)" />
+       <Stack.Screen name='continueAs'/>
         <Stack.Screen name="(tabs)" />
       </Stack>
     </RoleProvider>

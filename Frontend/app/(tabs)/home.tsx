@@ -1,32 +1,29 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, Text } from "react-native";
 import { useRole } from "../RoleContext";
-import StudentHomeScreen from "./StudentPage";
-import TeacherHomeScreen from "./Teacher";
+
+// Import role-based dashboards
+import StudentHome from "./StudentPage";
+import TeacherHome from "./Teacher";
 import SchoolHomeScreen from "./School";
 
-export default function HomeTab() {
+export default function HomeScreen() {
   const { role } = useRole();
 
-  const renderHome = () => {
-    switch (role) {
-      case "student":
-        return <StudentHomeScreen />;
-      case "teacher":
-        return <TeacherHomeScreen />;
-      case "school":
-        return <SchoolHomeScreen />;
-    }
-  };
+  if (role === "student") {
+    return <StudentHome />;
+  }
+  if (role === "teacher") {
+    return <TeacherHome />;
+  }
+  if (role === "school") {
+    return <SchoolHomeScreen />;
+  }
 
+  // fallback if no role selected
   return (
-    <View style={styles.container}>
-      <View style={styles.content}>{renderHome()}</View>
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <Text>Please select your role first</Text>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: { flex: 1 },        // full screen
-  content: { flex: 1 },          // takes all space above the tab bar
-});

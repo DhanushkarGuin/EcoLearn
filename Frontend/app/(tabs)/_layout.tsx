@@ -34,7 +34,6 @@ export default function TabsLayout() {
           tabBarStyle: { display: "none" }
         }}
       >
-        <Tabs.Screen name="home" />
         <Tabs.Screen name="notifications" />
         <Tabs.Screen name="profile" />
       </Tabs>

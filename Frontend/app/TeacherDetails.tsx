@@ -4,6 +4,7 @@ import { Feather, FontAwesome5 } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as ImagePicker from 'expo-image-picker';
 import { router } from 'expo-router';
+import { useRole } from "./RoleContext"; // ✅ Import role context
 
 const handleSubmitButton = () =>{
   router.push('/Teacher')
@@ -20,6 +21,7 @@ interface TeacherProfile {
 }
 
 const TeacherDetailsScreen: React.FC = () => {
+  const { setRole } = useRole();
   const [theme, setTheme] = useState<'light' | 'dark'>('dark');
   const [profile, setProfile] = useState<Partial<TeacherProfile>>({});
   const [imageUri, setImageUri] = useState<string | null>(null);
@@ -68,6 +70,11 @@ const TeacherDetailsScreen: React.FC = () => {
     };
     await AsyncStorage.setItem(TEACHER_PROFILE_KEY, JSON.stringify(profileToSave));
     Alert.alert('Success', 'Your details have been saved.');
+  };
+ const handleSubmitButton = async () => {
+    await handleSave();         // Save student details
+    setRole("teacher");         // ✅ Mark role as student
+    router.push('/Teacher'); // Redirect to student home
   };
 
   const toggleTheme = () => setTheme(t => (t === 'dark' ? 'light' : 'dark'));
