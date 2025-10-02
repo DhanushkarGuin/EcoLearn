@@ -5,8 +5,6 @@ import {
 } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import BottomTabBar from '../components/BottomTabBar';
-
 const TEACHERS_DATA_KEY = '@school_teachers';
 
 interface Teacher {
@@ -119,7 +117,6 @@ const SchoolPointsAllocationScreen: React.FC = () => {
             </View>
         </View>
       </KeyboardAvoidingView>
-      <BottomTabBar theme={theme} />
     </SafeAreaView>
   );
 };

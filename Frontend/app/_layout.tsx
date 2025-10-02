@@ -2,6 +2,7 @@ import { Stack } from 'expo-router';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
+import { RoleProvider } from './RoleContext';
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
@@ -26,7 +27,14 @@ export default function RootLayout() {
 
   // 4. Render the stack navigator
   return (
-    <Stack screenOptions={{ headerShown: false }}>
-    </Stack>
+    <RoleProvider>
+      <Stack 
+        screenOptions={{ headerShown: false }} 
+        initialRouteName="(auth)"   // 👈 ensures login/signup shows first
+      >
+        <Stack.Screen name="(auth)" />
+        <Stack.Screen name="(tabs)" />
+      </Stack>
+    </RoleProvider>
   );
 }

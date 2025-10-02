@@ -353,4 +353,3 @@ const getStyles = (theme: 'dark' | 'light') => StyleSheet.create({
 });
 
 export default PlantographScreen;
-

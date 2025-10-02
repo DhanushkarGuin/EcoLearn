@@ -10,7 +10,6 @@ import {
   StatusBar,
 } from 'react-native';
 import { Feather, FontAwesome5 } from '@expo/vector-icons';
-import BottomTabBar from '../components/BottomTabBar';
 
 // --- Mock Data for Students ---
 // In a real app, this would be fetched from your database
@@ -108,7 +107,6 @@ const LeaderboardScreen: React.FC = () => {
         />
 
       </View>
-      <BottomTabBar theme={theme} />
     </SafeAreaView>
   );
 };

@@ -5,7 +5,6 @@ import {
 } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import BottomTabBar from '../components/BottomTabBar';
 
 const EVENTS_STORAGE_KEY = '@school_events';
 
@@ -134,7 +133,6 @@ const SchoolPrincipalEventsScreen: React.FC = () => {
                 ListEmptyComponent={<Text style={styles.emptyText}>No events organized yet.</Text>}
             />
         </View>
-        <BottomTabBar theme={theme} />
 
         {/* --- Create Event Modal --- */}
         <Modal visible={modalVisible} transparent={true} animationType="slide">

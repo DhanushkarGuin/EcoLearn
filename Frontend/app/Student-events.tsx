@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity, Image, FlatList, Alert, Modal, TextInput, StatusBar } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import BottomTabBar from '../components/BottomTabBar';
+import { useRouter } from 'expo-router'; // 1. Import the router hook
 
 const EVENTS_STORAGE_KEY = '@school_events';
 const STUDENT_DATA_KEY = '@student_data';
@@ -37,19 +37,23 @@ const SchoolStudentEventsScreen: React.FC = () => {
   // Form State
   const [registrantName, setRegistrantName] = useState('');
   const [registrantClass, setRegistrantClass] = useState('');
+  
+  // 2. Initialize the router
+  const router = useRouter();
 
   useEffect(() => {
     loadData();
-    const interval = setInterval(loadData, 2000);
+    const interval = setInterval(loadData, 2000); // Refresh data periodically
     return () => clearInterval(interval);
   }, []);
 
   const loadData = async () => {
     const eventsJson = await AsyncStorage.getItem(EVENTS_STORAGE_KEY);
     if (eventsJson) setEvents(JSON.parse(eventsJson));
+
     const studentJson = await AsyncStorage.getItem(STUDENT_DATA_KEY);
     if (studentJson) setStudent(JSON.parse(studentJson));
-    else setStudent(MOCK_STUDENT);
+    else setStudent(MOCK_STUDENT); // Initialize if not present
   };
 
   const openRegistrationModal = (event: Event) => {
@@ -103,9 +107,15 @@ const SchoolStudentEventsScreen: React.FC = () => {
         <View style={styles.container}>
             <View style={styles.header}>
                 <Image source={require('../assets/images/logo-2.png')} style={styles.logo} />
-                <TouchableOpacity onPress={toggleTheme}>
-                    <Feather name={theme === 'light' ? 'moon' : 'sun'} size={24} color={headerIconColor} />
-                </TouchableOpacity>
+                {/* 3. Wrap header icons for correct alignment */}
+                <View style={styles.headerIcons}>
+                    <TouchableOpacity onPress={toggleTheme}>
+                        <Feather name={theme === 'light' ? 'moon' : 'sun'} size={24} color={headerIconColor} />
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.backButtonCircle} onPress={() => router.back()}>
+                        <Feather name="chevron-left" size={24} color={headerIconColor} />
+                    </TouchableOpacity>
+                </View>
             </View>
 
             <View style={styles.titleContainer}>
@@ -138,9 +148,7 @@ const SchoolStudentEventsScreen: React.FC = () => {
                 ListEmptyComponent={<Text style={styles.emptyText}>No upcoming events.</Text>}
             />
         </View>
-        <BottomTabBar theme={theme} />
 
-        {/* --- NEW: REGISTRATION MODAL --- */}
         <Modal visible={selectedEvent !== null} transparent={true} animationType="slide">
             <View style={styles.modalContainer}>
                 <View style={styles.modalContent}>
@@ -165,7 +173,7 @@ const getStyles = (theme: 'dark' | 'light') => StyleSheet.create({
     safeArea: { flex: 1, backgroundColor: theme === 'dark' ? '#121212' : '#F5F5F5' },
     container: { flex: 1 },
     header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingVertical: 15, paddingHorizontal: 20 },
-   logo: {
+    logo: {
   height: 100, // You can adjust the height as needed
   width: 100, 
   backgroundColor: 'none',
@@ -173,6 +181,25 @@ const getStyles = (theme: 'dark' | 'light') => StyleSheet.create({
   marginTop: 5, // Adds space from the top of the screen
   marginLeft: -10, // Aligns it nicely with the buttons
 },
+    // 4. New style for the icon container
+    headerIcons: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 15,
+    },
+    backButtonCircle: {
+        width: 40,
+        height: 40,
+        borderRadius: 20,
+        backgroundColor: theme === 'dark' ? '#1E1E1E' : '#FFFFFF',
+        justifyContent: 'center',
+        alignItems: 'center',
+        elevation: 3,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.1,
+        shadowRadius: 2,
+    },
     titleContainer: { paddingHorizontal: 20, marginBottom: 15 },
     pageTitle: { color: theme === 'dark' ? '#FFFFFF' : '#121212', fontSize: 28, fontFamily: 'Poppins-Regular' },
     pointsText: { color: '#FBBF24', fontSize: 16, fontFamily: 'Poppins-Regular', marginTop: 5 },

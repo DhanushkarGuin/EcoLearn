@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity, Image, FlatList, TextInput, Alert, StatusBar, KeyboardAvoidingView, Platform } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import BottomTabBar from '../components/BottomTabBar';
 
 const TEACHERS_DATA_KEY = '@school_teachers';
 const STUDENTS_DATA_KEY = '@school_students';
@@ -128,7 +127,6 @@ const TeacherPointsDistributionScreen: React.FC = () => {
             </View>
         </View>
         </KeyboardAvoidingView>
-      <BottomTabBar theme={theme} />
     </SafeAreaView>
   );
 };
