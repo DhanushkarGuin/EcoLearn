@@ -9,6 +9,12 @@ import {
   ScrollView
 } from 'react-native';
 import { Feather } from '@expo/vector-icons';
+import { router } from 'expo-router';
+
+// Page-flow
+const handleBackButton = () =>{
+  router.push('/StudentPage')
+}
 
 // --- Data for our rewards ---
 // In a real app, this might come from an API
@@ -49,7 +55,7 @@ const RewardsScreen: React.FC = () => {
             <TouchableOpacity onPress={toggleTheme} style={styles.iconButton}>
                 <Feather name={theme === 'light' ? 'moon' : 'sun'} size={24} color={styles.headerIconColor.color} />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.backButtonCircle}>
+            <TouchableOpacity style={styles.backButtonCircle} onPress={handleBackButton}>
                 <Feather name="chevron-left" size={24} color={styles.headerIconColor.color} />
             </TouchableOpacity>
           </View>

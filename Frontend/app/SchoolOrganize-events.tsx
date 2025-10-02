@@ -5,6 +5,7 @@ import {
 } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { router } from 'expo-router';
 
 const EVENTS_STORAGE_KEY = '@school_events';
 
@@ -104,6 +105,9 @@ const SchoolPrincipalEventsScreen: React.FC = () => {
                 <TouchableOpacity onPress={toggleTheme}>
                     <Feather name={theme === 'light' ? 'moon' : 'sun'} size={24} color={headerIconColor} />
                 </TouchableOpacity>
+                <TouchableOpacity style={styles.backButtonCircle} onPress={() => router.back()}>
+                  <Feather name="chevron-left" size={24} color={headerIconColor}/>
+                </TouchableOpacity>
             </View>
 
             <View style={styles.titleContainer}>
@@ -187,6 +191,19 @@ const getStyles = (theme: 'dark' | 'light') => StyleSheet.create({
     cancelButtonText: { color: '#AEB6BF', fontFamily: 'Poppins-Regular', fontSize: 16 },
     submitButton: { backgroundColor: '#FBBF24', padding: 15, borderRadius: 10 },
     submitButtonText: { color: '#333', fontFamily: 'Poppins-Regular', fontSize: 16 },
+    backButtonCircle: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: theme === 'dark' ? '#1E1E1E' : '#FFFFFF',
+    justifyContent: 'center',
+    alignItems: 'center',
+    elevation: 3,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+}
 });
 
 export default SchoolPrincipalEventsScreen;

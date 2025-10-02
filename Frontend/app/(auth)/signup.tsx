@@ -115,9 +115,7 @@ const Index = () =>{
                 <View style={styles.loginPromptContainer}>
                     <Text style={styles.alreadyText}>Already have an account?</Text>
                     <TouchableOpacity>
-                        
-                        <Text style={styles.loginButton} onPress={()=> router.push("/signup")}>Login</Text>
-
+                        <Text style={styles.loginButton} onPress={()=> router.push("/login")}>Login</Text>
                     </TouchableOpacity>
                 </View>
             </View>

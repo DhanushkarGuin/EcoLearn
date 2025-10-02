@@ -6,6 +6,11 @@ import {
 import { Feather, FontAwesome5 } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as ImagePicker from 'expo-image-picker';
+import { router } from 'expo-router';
+
+const handleSubmitButton = () =>{
+  router.push('/StudentPage')
+}
 
 const STUDENT_PROFILE_KEY = '@student_profile';
 
@@ -101,7 +106,7 @@ const StudentDetailsScreen: React.FC = () => {
             <TextInput style={styles.input} placeholder="Class (e.g., 10-A)" value={profile.studentClass} onChangeText={val => handleInputChange('studentClass', val)} placeholderTextColor="#888" />
             <TextInput style={styles.input} placeholder="Roll Number" value={profile.rollNumber} onChangeText={val => handleInputChange('rollNumber', val)} keyboardType="numeric" placeholderTextColor="#888" />
             
-            <TouchableOpacity style={styles.submitButton} onPress={handleSave}>
+            <TouchableOpacity style={styles.submitButton} onPress={handleSubmitButton}>
                 <Text style={styles.submitButtonText}>Save Details</Text>
             </TouchableOpacity>
         </ScrollView>

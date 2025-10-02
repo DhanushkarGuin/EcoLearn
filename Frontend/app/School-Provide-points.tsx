@@ -6,6 +6,7 @@ import {
 import { Feather } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 const TEACHERS_DATA_KEY = '@school_teachers';
+import { router } from 'expo-router';
 
 interface Teacher {
   id: string;
@@ -80,6 +81,9 @@ const SchoolPointsAllocationScreen: React.FC = () => {
                 <TouchableOpacity onPress={toggleTheme}>
                     <Feather name={theme === 'light' ? 'moon' : 'sun'} size={24} color={headerIconColor} />
                 </TouchableOpacity>
+                <TouchableOpacity style={styles.backButtonCircle} onPress={() => router.back()}>
+                  <Feather name="chevron-left" size={24} color={headerIconColor}/>
+                </TouchableOpacity>
             </View>
 
             <Text style={styles.pageTitle}>Allocate Points</Text>
@@ -145,6 +149,19 @@ const getStyles = (theme: 'dark' | 'light') => StyleSheet.create({
     input: { backgroundColor: theme === 'dark' ? '#2E2E2E' : '#F0F0F0', color: theme === 'dark' ? '#FFFFFF' : '#121212', borderRadius: 10, padding: 15, fontSize: 16, fontFamily: 'Poppins-Regular', marginBottom: 15 },
     submitButton: { backgroundColor: '#FBBF24', padding: 15, borderRadius: 10, alignItems: 'center' },
     submitButtonText: { color: '#333', fontFamily: 'Poppins-Regular', fontSize: 16 },
+    backButtonCircle: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: theme === 'dark' ? '#1E1E1E' : '#FFFFFF',
+    justifyContent: 'center',
+    alignItems: 'center',
+    elevation: 3,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+}
 });
 
 export default SchoolPointsAllocationScreen;

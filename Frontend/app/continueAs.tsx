@@ -4,6 +4,20 @@ import RoleButton from '../components/RoleButton';
 import { useRouter } from 'expo-router';
 import { routePatternToRegex } from 'expo-router/build/fork/getStateFromPath-forks';
 import { useRole } from "./RoleContext";
+import {router} from 'expo-router';
+
+//Page-flow
+const handleStudentPress = () =>{
+  router.push('/StudentPage')
+}
+
+const handleTeacherPress = () =>{
+  router.push('/Teacher')
+}
+
+const handleSchoolPress = () =>{
+  router.push('/School')
+}
 
 const RoleSelectionScreen: React.FC = () => {
   const router = useRouter();
@@ -24,8 +38,7 @@ const RoleSelectionScreen: React.FC = () => {
           textStyle={styles.studentButtonText}
           // 👇 Place your image in the assets folder and update the path
           imageSource={require('../assets/images/student.png')}
-          onPress={() => { setRole("student")
-            router.push("/(tabs)/home")}}
+          onPress={() => {router.push("/StudentDetails")}}
         />
 
         <RoleButton
@@ -34,8 +47,7 @@ const RoleSelectionScreen: React.FC = () => {
           textStyle={styles.teacherButtonText}
           // 👇 Place your image in the assets folder and update the path
           imageSource={require('../assets/images/teacher.png')}
-          onPress={() => { setRole("teacher")
-            router.push("/Teacher")}}
+          onPress={() => {router.push("/TeacherDetails")}}
         />
 
         <RoleButton
@@ -44,8 +56,7 @@ const RoleSelectionScreen: React.FC = () => {
           textStyle={styles.principalButtonText}
           // 👇 Place your image in the assets folder and update the path
           imageSource={require('../assets/images/school.png')}
-          onPress={() => { setRole('school')
-            router.push("/School")}}
+          onPress={() => {router.push("/SchoolDetails")}}
         />
       </View>
     </SafeAreaView>

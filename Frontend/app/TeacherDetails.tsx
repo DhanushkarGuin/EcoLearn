@@ -3,6 +3,11 @@ import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity, Image, TextInpu
 import { Feather, FontAwesome5 } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as ImagePicker from 'expo-image-picker';
+import { router } from 'expo-router';
+
+const handleSubmitButton = () =>{
+  router.push('/Teacher')
+}
 
 const TEACHER_PROFILE_KEY = '@teacher_profile';
 
@@ -99,7 +104,7 @@ const TeacherDetailsScreen: React.FC = () => {
             <TextInput style={styles.input} placeholder="Primary Subject" value={profile.subject} onChangeText={val => handleInputChange('subject', val)} placeholderTextColor="#888" />
             <TextInput style={styles.input} placeholder="Contact Email" value={profile.contactEmail} onChangeText={val => handleInputChange('contactEmail', val)} keyboardType="email-address" placeholderTextColor="#888" />
             
-            <TouchableOpacity style={styles.submitButton} onPress={handleSave}>
+            <TouchableOpacity style={styles.submitButton} onPress={handleSubmitButton}>
                 <Text style={styles.submitButtonText}>Save Details</Text>
             </TouchableOpacity>
         </ScrollView>
@@ -132,4 +137,3 @@ const getStyles = (theme: 'dark' | 'light') => StyleSheet.create({
 });
 
 export default TeacherDetailsScreen;
-

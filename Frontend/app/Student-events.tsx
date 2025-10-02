@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity, Image, FlatList, Alert, Modal, TextInput, StatusBar } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useRouter } from 'expo-router'; // 1. Import the router hook
+import { useRouter} from 'expo-router'; // 1. Import the router hook
 
 const EVENTS_STORAGE_KEY = '@school_events';
 const STUDENT_DATA_KEY = '@student_data';

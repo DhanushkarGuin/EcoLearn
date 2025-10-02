@@ -2,6 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity, Image, FlatList, Modal, StatusBar } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { router } from 'expo-router';
+
+// Page-flow
+const handleBackButton = () =>{
+    router.push('/Teacher')
+}
 
 const EVENTS_STORAGE_KEY = '@school_events';
 
@@ -44,6 +50,9 @@ const SchoolTeacherEventsScreen: React.FC = () => {
                 <Image source={require('../assets/images/logo-2.png')} style={styles.logo} />
                 <TouchableOpacity onPress={toggleTheme}>
                     <Feather name={theme === 'light' ? 'moon' : 'sun'} size={24} color={headerIconColor} />
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.backButtonCircle} onPress={() => router.back()}>
+                    <Feather name="chevron-left" size={24} color={headerIconColor}/>
                 </TouchableOpacity>
             </View>
 
@@ -105,7 +114,7 @@ const getStyles = (theme: 'dark' | 'light') => StyleSheet.create({
   resizeMode: 'contain', // Ensures the logo scales correctly without distortion
   marginTop: 5, // Adds space from the top of the screen
   marginLeft: -10, // Aligns it nicely with the buttons
-      },
+    },
     pageTitle: { color: theme === 'dark' ? '#FFFFFF' : '#121212', fontSize: 28, fontFamily: 'Poppins-Regular', paddingHorizontal: 20, marginBottom: 15 },
     card: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', backgroundColor: theme === 'dark' ? '#1E1E1E' : '#FFFFFF', borderRadius: 15, padding: 20, marginHorizontal: 20, marginBottom: 15, elevation: 3 },
     cardTitle: { color: theme === 'dark' ? '#EAEAEA' : '#121212', fontSize: 20, fontFamily: 'Poppins-Regular' },
@@ -122,6 +131,19 @@ const getStyles = (theme: 'dark' | 'light') => StyleSheet.create({
     studentClass: { color: '#AEB6BF', fontSize: 14, fontFamily: 'Poppins-Regular' },
     closeButton: { backgroundColor: '#FBBF24', padding: 15, borderRadius: 10, marginTop: 20 },
     closeButtonText: { color: '#333', fontFamily: 'Poppins-Regular', fontSize: 16, textAlign: 'center' },
+    backButtonCircle: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: theme === 'dark' ? '#1E1E1E' : '#FFFFFF',
+    justifyContent: 'center',
+    alignItems: 'center',
+    elevation: 3,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+}
 });
 
 export default SchoolTeacherEventsScreen;

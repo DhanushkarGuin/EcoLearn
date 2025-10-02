@@ -3,6 +3,11 @@ import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity, Image, TextInpu
 import { Feather, FontAwesome5 } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as ImagePicker from 'expo-image-picker';
+import { router } from 'expo-router';
+
+const handleSubmitButton = () =>{
+  router.push('/School')
+}
 
 const SCHOOL_PROFILE_KEY = '@school_profile';
 
@@ -97,7 +102,7 @@ const SchoolDetailsScreen: React.FC = () => {
             <TextInput style={styles.input} placeholder="School Address" value={profile.address} onChangeText={val => handleInputChange('address', val)} multiline placeholderTextColor="#888" />
             <TextInput style={styles.input} placeholder="Contact Number" value={profile.contactNumber} onChangeText={val => handleInputChange('contactNumber', val)} keyboardType="phone-pad" placeholderTextColor="#888" />
             
-            <TouchableOpacity style={styles.submitButton} onPress={handleSave}>
+            <TouchableOpacity style={styles.submitButton} onPress={handleSubmitButton}>
                 <Text style={styles.submitButtonText}>Save Details</Text>
             </TouchableOpacity>
         </ScrollView>

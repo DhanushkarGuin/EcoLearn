@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity, Image, FlatList, TextInput, Alert, StatusBar, KeyboardAvoidingView, Platform } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {router} from 'expo-router'
 
 const TEACHERS_DATA_KEY = '@school_teachers';
 const STUDENTS_DATA_KEY = '@school_students';
@@ -93,6 +94,9 @@ const TeacherPointsDistributionScreen: React.FC = () => {
                 <TouchableOpacity onPress={toggleTheme}>
                     <Feather name={theme === 'light' ? 'moon' : 'sun'} size={24} color={headerIconColor} />
                 </TouchableOpacity>
+                <TouchableOpacity style={styles.backButtonCircle} onPress={() => router.back()}>
+                  <Feather name="chevron-left" size={24} color={headerIconColor}/>
+                </TouchableOpacity>
             </View>
 
             <View style={styles.titleContainer}>
@@ -153,6 +157,19 @@ const getStyles = (theme: 'dark' | 'light') => StyleSheet.create({
     footer: { padding: 20, borderTopWidth: 1, borderTopColor: theme === 'dark' ? '#2E2E2E' : '#EAECEE' },
     submitButton: { backgroundColor: '#FBBF24', padding: 15, borderRadius: 10, alignItems: 'center' },
     submitButtonText: { color: '#333', fontFamily: 'Poppins-Regular', fontSize: 16 },
+    backButtonCircle: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: theme === 'dark' ? '#1E1E1E' : '#FFFFFF',
+    justifyContent: 'center',
+    alignItems: 'center',
+    elevation: 3,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+}
 });
 
 export default TeacherPointsDistributionScreen;

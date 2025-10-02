@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, ScrollView, TouchableOpacity, Image } from 'react-native';
 import Header from '../../components/Header';
 import CalendarWidget from '../../components/CalendarWidget';
+import {router} from 'expo-router';
 
 // Reusable Action Card Component
 interface ActionCardProps {
@@ -21,6 +22,18 @@ const ActionCard: React.FC<ActionCardProps> = ({ title, imageSource, onPress, th
     );
 };
 
+//Page-flow
+const handleEventsButton = () =>{
+  router.push('/SchoolOrganize-events')
+}
+
+const handlePointsButton = () =>{
+  router.push('/School-Provide-points')
+}
+
+const handleLeaderboardsButton = () =>{
+  router.push('/LeaderBoard')
+}
 
 const SchoolHomeScreen: React.FC = () => {
   const [theme, setTheme] = useState<'dark' | 'light'>('light'); // Defaulting to light as per image
@@ -41,28 +54,30 @@ const SchoolHomeScreen: React.FC = () => {
 
           {/* School Events Card */}
           <View style={[styles.card, styles.eventsCard]}>
-            <Text style={styles.cardTitle}>School Events</Text>
-            {/* The CalendarWidget component is reused */}
-            <CalendarWidget theme={theme} />
+            <TouchableOpacity onPress={handleEventsButton}>
+              <Text style={styles.cardTitle}>School Events</Text>
+              {/* The CalendarWidget component is reused */}
+              <CalendarWidget theme={theme} />
+            </TouchableOpacity>
           </View>
 
           {/* Action Cards */}
           <ActionCard
             title="Organize Events"
             imageSource={require('../../assets/images/manage-events.png')}
-            onPress={() => console.log('Manage Events')}
+            onPress={handleEventsButton}
             theme={theme}
           />
           <ActionCard
             title="Manage Points"
             imageSource={require('../../assets/images/manage-points.png')}
-            onPress={() => console.log('Manage Points')}
+            onPress={handlePointsButton}
             theme={theme}
           />
           <ActionCard
             title="Check LeaderBoard"
             imageSource={require('../../assets/images/check-leaderBoard.png')}
-            onPress={() => console.log('Check Plantography')}
+            onPress={handleLeaderboardsButton}
             theme={theme}
           />
 
