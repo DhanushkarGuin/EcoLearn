@@ -10,7 +10,6 @@ import {
   StatusBar,
 } from 'react-native';
 import { Feather, FontAwesome5 } from '@expo/vector-icons';
-import BottomTabBar from '../components/BottomTabBar';
 
 // --- Data & Constants for Carbon Calculation ---
 // These are simplified estimates. Real calculations are more complex.
@@ -142,7 +141,6 @@ const CarbonFootprintScreen: React.FC = () => {
             </View>
         </ScrollView>
       </View>
-      <BottomTabBar theme={theme} />
     </SafeAreaView>
   );
 };

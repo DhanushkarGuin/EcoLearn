@@ -31,6 +31,7 @@ const Index = () =>{
       
       
       <Link href="/disasterGame" style={styles.signup}>DisasterGame</Link>
+      <Link href="/CarbonCrusher" style={styles.signup}>CarbonCrusher</Link>
     </View>
   )
 }

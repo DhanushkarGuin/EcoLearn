@@ -3,7 +3,6 @@ import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity, Image, TextInpu
 import { Feather, FontAwesome5 } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as ImagePicker from 'expo-image-picker';
-import BottomTabBar from '../components/BottomTabBar';
 
 const SCHOOL_PROFILE_KEY = '@school_profile';
 
@@ -103,7 +102,6 @@ const SchoolDetailsScreen: React.FC = () => {
             </TouchableOpacity>
         </ScrollView>
       </View>
-      <BottomTabBar theme={theme} />
     </SafeAreaView>
   );
 };

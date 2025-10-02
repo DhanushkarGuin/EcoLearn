@@ -10,7 +10,6 @@ import {
   StatusBar,
 } from 'react-native';
 import { Feather } from '@expo/vector-icons';
-import BottomTabBar from '../components/BottomTabBar';
 
 // --- Mock Data for Games ---
 // In a real app, this would come from an API or a config file.
@@ -103,7 +102,6 @@ const GameListScreen: React.FC = () => {
             ))}
         </ScrollView>
       </View>
-      <BottomTabBar theme={theme} />
     </SafeAreaView>
   );
 };

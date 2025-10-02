@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity, Image, FlatList, Modal, StatusBar } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import BottomTabBar from '../components/BottomTabBar';
 
 const EVENTS_STORAGE_KEY = '@school_events';
 
@@ -67,7 +66,6 @@ const SchoolTeacherEventsScreen: React.FC = () => {
                 ListEmptyComponent={<Text style={styles.emptyText}>No events found.</Text>}
             />
         </View>
-        <BottomTabBar theme={theme} />
 
         {/* --- NEW: MANAGEMENT MODAL --- */}
         <Modal visible={selectedEvent !== null} transparent={true} animationType="slide">

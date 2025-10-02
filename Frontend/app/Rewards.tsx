@@ -9,7 +9,6 @@ import {
   ScrollView
 } from 'react-native';
 import { Feather } from '@expo/vector-icons';
-import BottomTabBar from '../components/BottomTabBar';
 
 // --- Data for our rewards ---
 // In a real app, this might come from an API
@@ -108,7 +107,6 @@ const RewardsScreen: React.FC = () => {
         </TouchableOpacity>
 
       </View>
-      <BottomTabBar theme={theme} />
     </SafeAreaView>
   );
 };

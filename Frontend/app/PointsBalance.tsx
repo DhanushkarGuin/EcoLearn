@@ -9,7 +9,6 @@ import {
   ScrollView,
 } from 'react-native';
 import { Feather } from '@expo/vector-icons';
-import BottomTabBar from '../components/BottomTabBar';
 
 // --- Reusable component for the NEW progress bars ---
 interface ProgressBarProps {
@@ -109,7 +108,6 @@ const BalanceScreen: React.FC = () => {
 
         </ScrollView>
       </View>
-      <BottomTabBar theme={theme} />
     </SafeAreaView>
   );
 };

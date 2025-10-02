@@ -1,8 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView,Image } from 'react-native';
 import RoleButton from '../components/RoleButton';
+import { useRouter } from 'expo-router';
+import { routePatternToRegex } from 'expo-router/build/fork/getStateFromPath-forks';
+import { useRole } from "./RoleContext";
 
 const RoleSelectionScreen: React.FC = () => {
+  const router = useRouter();
+  const { setRole } = useRole();
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <Image
@@ -18,7 +24,8 @@ const RoleSelectionScreen: React.FC = () => {
           textStyle={styles.studentButtonText}
           // 👇 Place your image in the assets folder and update the path
           imageSource={require('../assets/images/student.png')}
-          onPress={() => console.log('Student selected')}
+          onPress={() => { setRole("student")
+            router.push("/(tabs)/home")}}
         />
 
         <RoleButton
@@ -27,7 +34,8 @@ const RoleSelectionScreen: React.FC = () => {
           textStyle={styles.teacherButtonText}
           // 👇 Place your image in the assets folder and update the path
           imageSource={require('../assets/images/teacher.png')}
-          onPress={() => console.log('Teacher selected')}
+          onPress={() => { setRole("teacher")
+            router.push("/Teacher")}}
         />
 
         <RoleButton
@@ -36,7 +44,8 @@ const RoleSelectionScreen: React.FC = () => {
           textStyle={styles.principalButtonText}
           // 👇 Place your image in the assets folder and update the path
           imageSource={require('../assets/images/school.png')}
-          onPress={() => console.log('Principal selected')}
+          onPress={() => { setRole('school')
+            router.push("/School")}}
         />
       </View>
     </SafeAreaView>
