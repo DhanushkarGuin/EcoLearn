@@ -1,10 +1,24 @@
+// app/index.tsx
 import { useEffect } from "react";
-import { router } from "expo-router";
+import { useRouter } from "expo-router";
+import { ActivityIndicator, View } from "react-native";
 
 export default function Index() {
-  useEffect(() => {
-    router.replace("/continueAs"); // Redirects to ContinueAs page
-  }, []);
+  const router = useRouter();
 
-  return null; // Or you can show a splash/loading screen here
+  useEffect(() => {
+    // Wait until router is mounted, then redirect
+    const timer = setTimeout(() => {
+      router.replace("/continueAs"); // 👈 safe redirect
+    }, 100); // small delay ensures layout is ready
+
+    return () => clearTimeout(timer);
+  }, [router]);
+
+  // While redirecting, show loading
+  return (
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <ActivityIndicator size="large" />
+    </View>
+  );
 }
